@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <canvas width="500" height="500" style="border: 1px  solid red;" id="can"></canvas>
+
+    <script>
+        /** @type {HTMLCanvasElement} */
+
+        var can = document.querySelector("#can");
+        var ctx = can.getContext("2d");
+
+        ctx.save()
+        // 将画布的0 0点 移动到150 150的位置 偏移的是整个画布
+        ctx.translate(150, 150);
+        // ctx.fillRect(0, 0, 200, 100);
+        ctx.restore()
+        // ctx.fillRect(0, 0, 200, 200);
+        ctx.rotate(Math.PI*0.2)
+        ctx.fillRect(100, 50, 200, 200);
+
+
+    </script>
+</body>
+
+</html>

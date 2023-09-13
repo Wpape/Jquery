@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.banner {
+			width: 500px;
+			position: relative;
+		}
+
+		.imgs div {
+			height: 300px;
+			line-height: 300px;
+			text-align: center;
+			font-size: 100px;
+			background: blue;
+			display: none;
+		}
+
+		.prev,
+		.next {
+			position: absolute;
+			top: 100px
+		}
+
+		.prev {
+			left: 0;
+		}
+
+		.next {
+			right: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="banner">
+		<div class="imgs">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+		</div>
+		<button class="prev">上一张</button>
+		<button class="next">下一张</button>
+	</div>
+</body>
+<script>
+
+	function Slider(el) {
+
+		this.imgs = el.getElementsByClassName("imgs")[0].children;
+		this.next = el.getElementsByClassName("next")[0];
+		this.prev = el.getElementsByClassName("prev")[0];
+
+		this.x = 0;
+		this.imgs[this.x].style.display = "block";
+
+		// 下一页方法
+		this.nextFn = function () {
+
+			this.imgs[this.x].style.display = "none";
+
+			this.x++;
+			if (this.x > this.imgs.length - 1) {
+				this.x = 0;
+			}
+
+			this.imgs[this.x].style.display = "block";
+
+		}
+
+		// 上一页方法
+		this.prevFn = function () {
+
+			this.imgs[this.x].style.display = "none";
+
+			this.x--;
+			if (this.x < 0) {
+				this.x = this.imgs.length - 1;
+			}
+
+			this.imgs[this.x].style.display = "block";
+
+		}
+
+		// 绑定事件
+		var self = this;
+		this.next.onclick = function () {
+			self.nextFn();
+		}
+		this.prev.onclick = function () {
+			self.prevFn();
+		}
+
+	}
+
+
+	var banner = document.getElementsByClassName("banner");
+
+	var o = new Slider(banner[0]);
+
+
+
+
+
+</script>
+
+</html>

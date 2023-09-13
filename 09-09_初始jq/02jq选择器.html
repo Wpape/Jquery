@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <p>张三</p>
+    <p>李四</p>
+    <p class="name">王五</p>
+    <p>赵六</p>
+    <p id="name_js">奥特曼</p>
+
+   
+    <script>
+        //$是一个函数，当参数是一个css选择器字符串的时候 返回值是一个jquery对象，这个对象 类似数组 其中存放的是页面是所有的符合参数选择器的元素
+        //哪怕只有一个元素 返回值也是一个数组
+        console.log('',$('p'));
+        console.log('',$('.name'));
+        console.log('',$('#name_js'));
+
+
+        //传入对象，可以设置多个样式
+        $('.name').css({
+            color:'red',
+            // fontSize:'30px'
+        });
+
+        //如果只写入一个参数 表示获取这个元素的某个样式（优先级最高的样式）
+        console.log('获取',$('.name').css('color'));
+
+
+        //找到页面内第一个p'标签设置样式
+        $('p').first().css('color','red')
+        //同等(last找到最后一个 odd找到偶数个 even找到奇数个)
+        $('p:last').css('color','red')
+
+
+        //jq链式调用：原理 jq对象在调用一个和对象之后，会把原来的jq对象再返回出来，由于jq方法都是在对象上定义的，所以在调用一个方法之后，可以调用其他的方法，这就是链式调用
+        $('p').css('fontSize','20px').first().css('fontSize','30px')
+
+
+
+        //实现原理
+        //构造函数的原型对象
+        console.log('构造函数',$.fn);
+
+        $.fn.functionName = function(c){
+            this.css('color',c)
+            return this
+        }
+        $.fn.fun = function(c){
+            this.css('backgroundColor', c);
+            return this
+        }
+        $('p').functionName('yellow').fun('red').html('更新内容');
+
+
+        //索引
+        //eq() 取出来的是jq对象 后面可以继续调用jq的方法
+        console.log('eq索引1',$('p').eq(0));
+        $('p').eq(3).css('fontSize','50px')
+        //[索引]取出来的是js原生dom对象 后面不能调用jq的方法
+        
+        console.log('',$('p')[0].css());
+    </script>
+</body>
+</html>

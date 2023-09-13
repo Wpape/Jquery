@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        .box {
+            width: 500px;
+            height: 200px;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        ul {
+            width: 2530px;
+            height: 100%;
+            /* border: 1px solid black; */
+            position: absolute;
+        }
+
+        ul li {
+            width: 500px;
+            height: 100%;
+            background-color: red;
+            display: inline-block;
+            font-size: 60px;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        .but-class {
+            padding: 5px 10px;
+            font-size: 20px;
+            color: pink;
+            position: absolute;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .but-left {
+            left: 0;
+            top: calc(50% - 20px);
+        }
+
+        .but-right {
+            right: 0;
+            top: calc(50% - 20px);
+        }
+
+        .nvm {
+            position: absolute;
+            bottom: 5px;
+            right: 0;
+            padding: 0 30px;
+        }
+
+        span {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            border-radius: 50%;
+            background-color: white;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <ul>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+        </ul>
+        <button class="but-class but-left">
+            < </button>
+                <button class="but-class but-right">
+                    >
+                </button>
+
+                <div class="nvm"></div>
+    </div>
+
+    <script>
+
+
+        var gentle = 0
+
+        for (let i = 0; i < $('li').length; i++) {
+
+            $('li')[i].innerText = i + 1
+
+            var $span = $("<span></span>");
+
+            $span.click(function () {
+                $('span').css('backgroundColor', 'white')
+                $(this).css('backgroundColor', 'black');
+
+                var this_left = $('li')[i].offsetLeft
+
+                $('ul').animate({ left: `-${this_left}` })
+
+                gentle = i
+            })
+
+            $('.nvm').append($span);
+
+        }
+
+        $('span')[0].style.backgroundColor = 'black'
+
+
+        // console.log('',$('button').siblings('.but-right'));
+
+        $('button').click(function () {
+            if ($(this).attr('class') == 'but-class but-left') {
+
+                gentle < $('li').length - 1 ? gentle++ : gentle = 0;
+
+            } else if ($(this).attr('class') == 'but-class but-right') {
+
+                gentle > 0 ? gentle-- : gentle = $('li').length - 1;
+
+            }
+
+            var this_left = $('li')[gentle].offsetLeft
+
+            $('ul').animate({ left: `-${this_left}` })
+
+            $('span').css('backgroundColor', 'white')
+            $('span')[gentle].style.backgroundColor = 'black'
+        })
+
+
+
+        var setFn = setInterval(function () {
+
+            gentle < $('li').length - 1 ? gentle++ : gentle = 0;
+
+            var this_left = $('li')[gentle].offsetLeft
+
+            $('ul').animate({ left: `-${this_left}` })
+
+            $('span').css('backgroundColor', 'white')
+            $('span')[gentle].style.backgroundColor = 'black'
+
+        }, 3000)
+
+        $('.box').hover(function () {
+            clearInterval(setFn);
+        }, function () {
+            setFn = setInterval(function () {
+
+                gentle < $('li').length - 1 ? gentle++ : gentle = 0;
+
+                var this_left = $('li')[gentle].offsetLeft
+
+                $('ul').animate({ left: `-${this_left}` })
+
+                $('span').css('backgroundColor', 'white')
+                $('span')[gentle].style.backgroundColor = 'black'
+
+            }, 3000)
+        })
+
+
+    </script>
+</body>
+
+</html>

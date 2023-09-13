@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #list {
+            width: 1300px;
+            border: 1px solid #000;
+            margin: 0 auto;
+            list-style: none;
+            overflow: auto;
+        }
+
+        .item {
+            width: 250px;
+            border: 1px solid #000;
+            float: left;
+            margin: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="list">
+        <li class="item"></li>
+        <li class="item"></li>
+        <li class="item"></li>
+        <li class="item"></li>
+        <li class="item"></li>
+    </ul>
+
+    <script src="./homework.js"></script>
+    <script>
+        for (var i = 0; i < data.length; i++) {
+            var img = document.createElement("img");
+            img.src = data[i].img_url;
+            img.style.width = "100%"
+
+            var wh = data[i].img_url.split("?")[1].split("x");
+            // wh[0]   图片的原始宽度
+            // wh[1]   图片的原始高度
+            console.log('====================================');
+            console.log(data[i].img_url.split("?")[1].split("x"));
+            console.log('====================================');
+            // h==?
+            // 250 / h === wh[0] / wh[1];
+            // h=250*wh[1]/wh[0]
+            img.style.height = 250 * wh[1] / wh[0] + "px";
+
+            // 把图片插入到最低的那一列
+
+            // 求最低的那一列
+
+            var items = document.querySelectorAll(".item");
+            var min = items[0].offsetHeight;
+            var index = 0;
+            for (var j = 0; j < items.length; j++) {
+                if (items[j].offsetHeight < min) {
+                    min = items[j].offsetHeight;
+                    index = j;
+                }
+
+            }
+            items[index].appendChild(img)
+        }
+
+
+
+    </script>
+</body>
+
+</html>

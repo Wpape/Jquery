@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #box {
+            width: 360px;
+            margin: 100px auto;
+        }
+
+        #img_box {
+            height: 140px;
+            background-image: url(./images/a.png);
+            position: relative;
+            /* border-radius: 100%; */
+        }
+
+        #img_box img {
+            position: absolute;
+
+        }
+        #view{
+            width: 360px;
+            height: 44px;
+            box-shadow: 0 0 15 skyblue inset;
+            border-radius: 22px;
+            text-align: center;
+            line-height: 44px;
+            color: #dedede;
+            letter-spacing: 10px;
+            position: relative;
+        }#circle{
+            width: 55px;
+            height: 55px;
+            /* background-image: url(./images/arrow.png); */
+            position: absolute;
+            top: -4px;left: -6px;
+
+        }#blue{
+            height: 44px;width: 22px;background-color: #713A3A;
+            position: absolute;
+            top: 0;left: 0;
+            border-radius: 22px 0 0 22px;
+        }#view::selection{
+            color: #dedede;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="img_box">
+            <img src="./images/a1.png" alt="">
+        </div>
+        <div id="view">
+            向右滑动开始验证
+            <div id="blue"></div>
+            <div id="circle"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    var list = [{
+        big_img: 'a.png',
+        small_img: 'a1.png',
+        top: '30px'
+    }, {
+        big_img: 'b.png',
+        small_img: 'b1.png',
+        top: '30px'
+    }]
+    var count = 0;
+    img_box.children[0].style.top = list[count].top
+
+
+    var key = false
+    circle.onmousedown = function(){
+        key = true
+        //获取鼠标的起始坐标
+        var x1 = event.clientX
+        document.onmousemove =function(){
+            event.preventDefault()
+            var x = event.clientX
+            circle.style.left = x-x1+'px'
+            blue.style.width = x-x1+'px'
+            img_box.children[count].style.left = x-x1+'px'
+            console.log('',x-x1);
+        }
+    }
+    document.onmousedown =function(){
+            if(key){
+                key = false
+                document.onmousemove = null
+            }
+        }
+</script>

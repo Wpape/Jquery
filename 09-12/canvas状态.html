@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas width="500" height="500" style="border: 1px solid black;" id="can"></canvas>
+    
+</body>
+</html>
+<script>
+      /** @type {HTMLCanvasElement} */
+
+      var can =document.querySelector('#can')
+    var ctx = can.getContext('2d')
+
+    ctx.lineWidth = 10
+    ctx.strokeStyle = 'red'
+    ctx.beginPath()
+    ctx.moveTo(0,10)
+    ctx.lineTo(10,100)
+    ctx.stroke()
+
+    ctx.lineWidth = 20
+    ctx.strokeStyle = 'yellow'
+    ctx.beginPath()
+    ctx.moveTo(50,10)
+    ctx.lineTo(50,100)
+    ctx.stroke()
+</script>

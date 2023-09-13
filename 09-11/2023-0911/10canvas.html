@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <canvas width="500" height="500" style="border: 1px solid red;" id="can"></canvas>
+    <!-- 画布 -->
+    <!-- ​<canvas> 是 HTML5 新增的，一个可以使用脚本(通常为 JavaScript) 在其中绘制图像的 HTML 元素。它可以用来制作照片集或者制作简单(也不是那么简单)的动画，甚至可以进行实时视频处理和渲染 -->
+    <!-- <canvas> 没有width、height，则默认 width为300、height 为 150，单位都是 px 也可以使用 css 属性来设置宽高，但是如宽高属性和初始比例不一致，他会出现扭曲。所以，建议永远不要使用 css 属性来设置 <canvas> 的宽高-->
+    <script>
+        /** @type {HTMLCanvasElement} */
+        var can = document.querySelector("#can");
+        // 获取绘制对象
+        var ctx = can.getContext("2d");
+        // 在坐标点20 20 的位置 画一个200 200的矩形
+        ctx.fillRect(20, 20, 200, 200);
+        // 设置填充颜色
+        ctx.fillStyle = "red"
+        ctx.fillRect(200, 200, 100, 100);
+        // 在坐标点0 0 的位置开始清除 100 100 是清除的范围
+        ctx.clearRect(0, 0, 100, 100)
+        // 如果后面的两个参数设置的是整个画布的大小 表示清除全部
+        ctx.clearRect(0, 0, 500, 500)
+
+        // 线条-------
+
+        // 线的颜色
+        ctx.strokeStyle = "red"
+        // 线宽
+        ctx.lineWidth = 10;
+
+
+        // 准备开始
+        // ctx.beginPath();
+        // // 先将笔移动到50 50 的位置
+        // ctx.moveTo(50,50)//落笔点
+        // // 画到某个点
+        // ctx.lineTo(100,100)//
+        // ctx.lineTo(20,100)//
+        // ctx.closePath() //闭合
+
+        // ctx.fill()//填充
+        // // 划线
+        // ctx.stroke()
+
+        // 圆形-------------------
+        // x坐标  y坐标  半径   
+        // 开始角  以弧度计算(弧的三点钟是0度  六点钟位置为0.5 * Math.PI 九点钟位置 1 * Math.PI)  十二点中位置 1.5*Math.PI
+
+        // 结束角 
+
+        //    顺逆时针  默认为false 顺时针  设置为true就是逆时针        
+        ctx.arc(240, 249, 150, 0.5 * Math.PI, 1 * Math.PI, false);
+        ctx.strokeStyle = 'red',
+            ctx.lineWidth = 10,
+            ctx.stroke()
+
+        ctx.font = "bold 50px 楷体";
+        ctx.fillStyle = "yellow"
+        ctx.textAlign = "center"
+        ctx.fillText("吴亦凡", 100, 100)
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

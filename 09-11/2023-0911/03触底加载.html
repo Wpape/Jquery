@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 400px;
+            border: 1px solid red;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <h1>吴亦凡</h1>
+        <h1>吴亦凡</h1>
+        <h1>吴亦凡</h1>
+        <h1>吴亦凡</h1>
+        <h1>吴亦凡</h1>
+        <h1>吴亦凡</h1>
+        <h1>吴亦凡</h1>
+        <h1>吴亦凡</h1>
+        <h1>吴亦凡</h1>
+        <h1>吴亦凡</h1>
+    </div>
+
+    <script>
+        // 判断触底  距离底部还有100px的时候 添加新的
+
+
+        // 已经滚动的高度    总高度          元素可视区域高度
+        // box.scrollTop>=box.scrollHeight-box.clientHeight-100
+
+        var loading = false;
+        box.onscroll = function () {
+            if (box.scrollTop >= box.scrollHeight - box.clientHeight - 100) {
+
+                if (!loading) {
+                    loading = true;
+                    // 发起请求  请求下一页的数据
+                    console.log('====================================');
+                    console.log("请求数据");
+                    console.log('====================================');
+                    setTimeout(function () {
+                        box.innerHTML += `
+                <h2>罗志祥</h2>
+                <h2>罗志祥</h2>
+                <h2>罗志祥</h2>
+                <h2>罗志祥</h2>
+                <h2>罗志祥</h2>
+                `
+
+                        loading = false;
+                    }, 1000)
+
+                }
+
+            }
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

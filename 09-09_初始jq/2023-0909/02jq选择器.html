@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <p class="name">吴亦凡</p>
+    <p>吴亦凡</p>
+    <p>吴亦凡</p>
+    <p>吴亦凡</p>
+    <p>吴亦凡</p>
+
+
+   
+    <script>
+        // $ 是一个函数, 当参数是一个css选择器字符串的时候 返回值是一个jquery对象,这个对象 类似数组 其中存放的是页面所有符合参数选择器的元素
+        // 哪怕只有一个元素 返回值也是数组
+        console.log($("p"));
+        console.log($(".name"));
+
+        // $("#id")
+        // $("div p")
+        // $("div> p")
+        // $("div+p")
+        // 设置样式
+        // $(".name").css("color","red");
+        // // 传入对象 设置多个样式
+        // $(".name").css({
+        //     fontSize:"30px",
+        //     border:"1px solid red",
+        //     width:"100px"
+        // });
+        
+        // // 如果只写一个参数  表示获取这个元素的某个样式(优先级最高的样式)
+        // console.log($(".name").css("color"));
+
+        // 找到第一个 
+        // $("p").first().css("color","red");
+        // $("p:first").css("color","red");
+
+        // $("p").last().css("color","red");
+        // 偶数
+        // $("p").odd().css("color","red");
+        // // 奇数
+        // $("p").even().css("color","red");
+
+        // 需求:除了第一个p标签变成红色  其他的都变成黄色
+
+        // $('p').css("color","yellow")
+        // $("p").first().css("color","red");
+        // 链式调用: 原理: jq对象在调用一个方法之后,会吧原来的jq对象再返回出来,由于jq方法都是在对象上定义的,所以在调用一个方法之后,可以调用其他的方法,这就是链式调用
+        // $('p').css("color","yellow").first().css("color","red");
+
+
+        // 实现原理: 
+
+        // 构造函数的原型对象
+        console.log($.fn);
+
+        $.fn.wuyifanColor=function(c){
+            this.css("color",c)
+            return this;
+        }
+        $.fn.luozhixiangColor=function(c){
+            this.css("backgroundColor",c)
+            return this;
+        }
+
+
+        // html()   ===>  innerHTML
+        // text()  ====>innerText
+        $("p").wuyifanColor("yellow").luozhixiangColor("red").html("内容");
+
+
+
+
+        //索引
+        // eq() 取出来的是jq对象 后面可以继续调用jq的方法
+        console.log($("p").eq(0));
+        $("p").eq(0).css("fontSize","50px")
+        // [索引] 取出来的是js原生dom对象  后面不能调用jq的方法
+        console.log();
+        // $("p")[0].css("fontSize","50px")
+
+        // $() 可以吧原生js dom对象 转成jq对象
+        $($("p")[0]).css("fontSize","50px")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    </script>
+</body>
+</html>

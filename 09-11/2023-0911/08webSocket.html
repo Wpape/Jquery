@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- 网络通信协议(http、https)：缺点：通信(请求)只能由客户端发起，客户端向服务端发送请求，服务器返回结果，无法做到服务器主动向客户端推送信息。
+
+    轮询(每隔一段时间，发送一个请求)：客户端每隔一段时间，向服务器发送一个请求，查看服务器有没有新的信息。
+    
+    轮询缺点：轮询效率太低，非常浪费资源(因为要不停的发送请求，来询问服务器是否有新的信息)
+    
+    webSocket(双线通信)：服务器可以主动向客户端推送信息，客户端也可以向服务器发送信息，没有同源限制，客户端可以和任意服务器通信(协议标识符：ws、wss)。 -->
+
+    <script>
+
+
+
+        // 和socket服务器建立连接
+        var ws = new WebSocket("ws://192.168.218.230:3011");
+
+        ws.onopen = function () {
+            // console.log("连接成功");
+            // 向服务器推送消息
+            ws.send("吴亦凡")
+
+        }
+        ws.onerror = function () {
+            console.log("连接失败");
+        }
+
+
+        ws.onmessage=function(res){
+            console.log(res);
+        }
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

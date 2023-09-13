@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 200px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="./homework.js"></script>
+    <!-- <img src="./lazyload.gif" alt="" data-lazy="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"> -->
+    <script>
+        for (var i = 0; i < data.length; i++) {
+            console.log(data[i].img_url);
+            var img = document.createElement("img");
+            img.src = "./lazyload.gif"
+            img.dataset.lazy = data[i].img_url;
+            document.body.appendChild(img)
+        }
+
+
+        var pics = document.querySelectorAll("img")
+
+        // onscroll = function () {
+        //     for (var i = 0; i < pics.length; i++) {
+        //         // 
+        //         if (pics[i].offsetTop <= document.documentElement.scrollTop + window.innerHeight + 200) {
+        //             pics[i].src = pics[i].dataset.lazy;
+        //         }
+        //     }
+        // }
+        // onscroll()
+        onscroll = f1
+        function f1 () {
+            for (var i = 0; i < pics.length; i++) {
+                // 
+                if (pics[i].offsetTop <= document.documentElement.scrollTop + window.innerHeight + 200&&!pics[i].isload) {
+                    console.log("赋值了");
+                    pics[i].src = pics[i].dataset.lazy;
+                    pics[i].isload=true;
+                }
+            }
+        }
+        f1()
+    </script>
+</body>
+
+</html>

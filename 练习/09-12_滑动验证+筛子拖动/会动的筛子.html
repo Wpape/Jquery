@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        .box {
+            border: 1px solid black;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .box .divList_js {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .spanList_js {
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            border-radius: 50%;
+        }
+
+        .divList_js_0 .spanList_js{
+            margin: auto;
+        }
+        .divList_js_1{
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .divList_js_2 .spanList_js:nth-of-type(2){
+            align-self: center
+        }
+        .divList_js_2 .spanList_js:nth-of-type(3){
+            align-self: self-end
+        }
+        .divList_js_1{
+            /* flex-direction: column; */
+            justify-content: space-between;
+            /* align-items:s; */
+        }
+        .divList_js_3 .spanList_js:nth-of-type(1){
+            /* flex: 1; */
+        }
+        .divList_js_3 .spanList_js:nth-of-type(2){
+            /* flex: 1; */
+            float: right;
+        }
+        .divList_js_3 .spanList_js:nth-of-type(3){
+            /* align-self: end */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box"></div>
+
+    <script>
+        // console.log('',$('.box'));
+
+        //往页面添加几个筛子
+        for (let i = 0; i < 6; i++) {
+            var divList = $('<div></div>');
+            divList.addClass(`divList_js divList_js_${i}`)
+            $('.box').append(divList)
+            for (let j = i; j < i + 1; j++) {
+                for (let k = 0; k < j + 1; k++) {
+                    var spanList = $('<span></span>');
+                    spanList.addClass('spanList_js')
+                    divList.append(spanList)
+                }
+            }
+        }
+        $('<div></div>').append($('.divList_js').eq(3).children().eq(0))
+    </script>
+</body>
+
+</html>

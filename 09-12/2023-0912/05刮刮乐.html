@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #can {
+            background-image: url(https://img2.baidu.com/it/u=3931865143,2808762865&fm=253&fmt=auto&app=138&f=JPEG?w=667&h=500);
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas width="500" height="300" style="border: 1px  solid red;" id="can"></canvas>
+
+    <script>
+        /** @type {HTMLCanvasElement} */
+
+        var can = document.querySelector("#can");
+        var ctx = can.getContext("2d");
+        ctx.fillStyle = "#ccc"
+        ctx.fillRect(0, 0, 500, 300);
+
+        ctx.globalCompositeOperation = "destination-out";
+
+        can.onmousedown = function () {
+            can.onmousemove = function () {
+                ctx.beginPath();
+                ctx.arc(event.offsetX, event.offsetY, 30, 0, Math.PI * 2);
+                ctx.fill()
+                ctx.stroke()
+            }
+        }
+        can.onmouseup = can.onmouseleave = function () {
+            can.onmousemove = null;
+        }
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

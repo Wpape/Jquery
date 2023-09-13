@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div>
+        <p class="o1">1</p>
+        <p class="o2">2</p>
+        <p class="o3">3</p>
+        <ul>
+            <li>女优</li>
+        </ul>
+    </div>
+
+   
+    <script>
+        console.log('父节点',$('.o1').parent());
+
+        console.log('所有的兄弟节点',$('.o1').siblings());
+
+        console.log('找到class为o2的兄弟节点',$('.o1').siblings('.o2'));
+
+        //往ul的尾部添加一个li
+        $('ul').append('<li>小泽玛丽亚</li>')
+        //往ul的头部添加一个li
+        $('ul').prepend('<li>桃乃木かな</li>')
+        //将li添加到ul的尾部
+        $('<li>苍井空</li>').appendTo('ul');
+
+        //给ul添加一个兄弟元素
+        $('ul').after('<h1>相沢みなみ</h1>')
+        //给ul添加一个父元素
+        $('ul').wrap('<h1>三上悠亜</h1>')
+
+        //将p标签放到ul的后面
+        $('p').insertAfter($('ul'))
+
+        //克隆
+        $('h1').clone()
+    </script>
+</body>
+</html>

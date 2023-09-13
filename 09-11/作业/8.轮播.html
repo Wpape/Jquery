@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-1.8.3.js"></script>
+    <style>
+        .view {
+            width: 560px;
+            height: 305px;
+            border: 1px solid #000;
+            overflow: hidden;
+        }
+
+        img {
+            width: 560px;
+        }
+
+        .banner {
+            /* width: 2800px; 
+           font-size: 0; */
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="view">
+        <div class="banner">
+            <img src="http://contentcms-bj.cdn.bcebos.com/cmspic/97ddcd044d05ddaf767ba17ebaae9651.jpeg?x-bce-process=image/crop,x_0,y_0,w_1219,h_664"
+                alt="">
+            <img src="http://contentcms-bj.cdn.bcebos.com/cmspic/525b3c1109982bd3384ab816d2d0478d.jpeg?x-bce-process=image/crop,x_0,y_0,w_1241,h_668"
+                alt="">
+            <img src="http://contentcms-bj.cdn.bcebos.com/cmspic/f8df6fc6d9dbb9d68b53fc8dfe9cba56.jpeg?x-bce-process=image/crop,x_0,y_0,w_1091,h_595"
+                alt="">
+            <img src="http://contentcms-bj.cdn.bcebos.com/cmspic/bec75cd3c735bdf66006657eef5fdfd5.jpeg?x-bce-process=image/crop,x_0,y_0,w_665,h_362"
+                alt="">
+            <img src="http://contentcms-bj.cdn.bcebos.com/cmspic/b36c9735d650051aef1e490e6bd3a2cb.jpeg?x-bce-process=image/crop,x_0,y_0,w_665,h_362"
+                alt="">
+        </div>
+    </div>
+    <div class="btns">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+    </div>
+    <button class="prev">上一张</button>
+    <button class="next">下一张</button>
+
+    <script>
+
+
+
+
+        // console.log(window.navigator);
+
+        console.log($.browser);
+
+
+
+        // 克隆第一张img标签  方法banner的最后面
+        $(".banner img").first().clone().appendTo($(".banner"))
+        $(".btns button").first().css("color", "red");
+
+        var flag = true; //限制点击  当都动画在执行的过程中,不允许再次执行,当动画结束之后才能再次执行
+        var x = 0;
+
+        $(".next").click(function () {
+            if (flag) {
+                flag = false;
+                $(".btns button").eq(x).css("color", "");
+                x++;
+                $(".btns button").eq(x == 5 ? 0 : x).css("color", "red");
+                $(".banner").animate({ marginLeft: -560 * x }, function () {
+                    if (x == $("img").length - 1) {
+                        x = 0;
+                        $(".banner").css({ marginLeft: 0 })
+                    }
+                    flag=true;
+                })
+            }
+        })
+
+
+
+        $(".prev").click(function(){
+            if (x==0) {
+                console.log(x);
+                $(".banner").css("marginLeft",-560*($("img").length-1))
+                x=5;
+            }
+            $(".btns button").eq(x == 5 ? 0 : x).css("color", "");
+            x--;
+            $(".btns button").eq(x).css("color", "red");
+            $(".banner").animate({ marginLeft: -560 * x })
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

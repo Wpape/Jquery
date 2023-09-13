@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas width="500" height="500" style="border: 1px solid red;" id="can"></canvas>
+</body>
+
+</html>
+<script>
+
+    /** @type {HTMLCanvasElement} */
+
+    //    画布
+    //  ​<canvas> 是 HTML5 新增的，一个可以使用脚本(通常为 JavaScript) 在其中绘制图像的 HTML 元素。它可以用来制作照片集或者制作简单(也不是那么简单)的动画，甚至可以进行实时视频处理和渲染
+    // <canvas> 没有width、height，则默认 width为300、height 为 150，单位都是 px 也可以使用 css 属性来设置宽高，但是如宽高属性和初始比例不一致，他会出现扭曲。所以，建议永远不要使用 css 属性来设置 <canvas> 的宽高
+
+
+
+    var can = document.querySelector('#can');
+    //获取绘制对象
+    var ctx = can.getContext("2d");
+
+    //在坐标点 20 20 的位置 画一个200 200的矩形
+    ctx.fillRect(20, 20, 200, 200)
+    //设置填充颜色
+    ctx.fillStyle = 'red'
+    ctx.fillRect(200, 200, 100, 100)
+
+    //在坐标点 0，0位置开始清除 100 100是清楚的范围
+    ctx.clearRect(0, 0, 100, 100)
+
+    //如果后面两个参数设置的是整个画布的大小 表示清除全部
+    ctx.clearRect(0, 0, 500, 500)
+
+
+    //线条
+
+    ctx.strokeStyle = 'red'//线的颜色
+    ctx.lineWidth = 10//线宽
+
+    ctx.beginPath()//准备开始
+    ctx.moveTo(50, 50)//先将笔移动到50，50的位置
+
+    ctx.lineTo(100, 100)//画到100，100的位置
+    ctx.lineTo(20, 100)//画到100，100的位置
+
+    ctx.closePath()//闭合
+
+    ctx.fill()//填充
+
+    ctx.stroke()//画线
+    ctx.clearRect(0, 0, 500, 500)
+
+
+    //圆形--
+    // x坐标y坐标 半径
+    //开始角以弧度计算(弧的三点钟是0度·六点钟位置为8.5·*·Math.PI·九点钟位置·1·*
+    // Math .PI)上二点中位置·1.5*Math.PI
+    // 结束角
+    // 顺逆时针默认为false 顺时针设置为true就是逆时针
+
+    ctx.arc(240, 249, 150 * Math.PI, 1 * Math.PI, true)
+    ctx.strokeStyle = 'red'
+    ctx.lineWidth = 10
+    ctx.stroke()
+   
+    ctx.font = 'bold 50px 楷体'
+    ctx.fillStyle = 'yellow',
+    ctx.textAlign = 'center'
+    ctx.fillText('文字',100,100)
+</script>                                                                                               

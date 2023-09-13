@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="title">计数：0</h1>
+    <button id="btn">弹窗</button>
+</body>
+</html>
+<script>
+  
+    //使用new关键字创建一个分线程，参数是分线程地址
+    var worker = new Worker("./耗时任务.js")
+    
+    //接收分线程发出的参数
+    worker.onmessage = (msg)=>{
+        console.log('',msg.data);
+        title.innerHTML = `计数：${msg.data}`
+    }
+
+    //h5新增api webWorker为js创建多线程环境，主线程创建一个worker线程，将一些耗时任务分给worker线程，等worker线程执行完毕之后再把结果给主线程。
+
+    btn.onclick = ()=>{
+        //alert 警告框 会阻止进程，进程中所有的代码逻辑（计时器）都会暂停执行
+        alert('弹出')
+    }
+</script>

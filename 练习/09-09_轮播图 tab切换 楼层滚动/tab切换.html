@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.table {
+			display: flex;
+		}
+		li {
+			width: 100px;
+			text-align: center;
+			list-style: none;
+			cursor: pointer;
+		}
+		.content {
+			display: none;
+		}
+		.conAvtive {
+			display: block;
+		}
+		.tabActive {
+			color: #ccb46c;
+		}
+	</style>
+	<body>
+		<div>
+			<!-- 导航栏部分 -->
+			<ul class="table">
+				<li class="tabActive">tab1</li>
+				<li>tab2</li>
+				<li>tab3</li>
+				<li>tab4</li>
+			</ul>
+			<!-- 内容区域 -->
+			<div class="content conAvtive">1</div>
+			<div class="content">2</div>
+			<div class="content">3</div>
+			<div class="content">4</div>
+		</div>
+	</body>
+	<script>
+		$(".table li").on("click", function() {
+			var divs = $(".content")
+			var lis = $(".table li")
+			lis.removeClass('tabActive')
+			$(this).addClass('tabActive')
+			for (var i = 0; i < lis.length; i ++) {
+				if (lis[i] == this) {
+					divs.removeClass('conAvtive')
+					divs.eq(i).addClass('conAvtive')
+				}
+			}
+		})
+	</script>
+</html>

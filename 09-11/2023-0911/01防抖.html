@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="height: 3000px;">
+
+    <button id="btn">点击请求数据</button>
+    <script>
+        // 降低代码的执行频率
+
+        // 防抖: 多次操作 以最后一次为准
+        //    var timer;
+        //     btn.onclick = function () {
+        //         clearTimeout(timer)
+        //          timer =setTimeout(function () {
+        //             console.log('====================================');
+        //             console.log("请求数据了");
+        //             console.log('====================================');
+        //         }, 1000)
+        //     }
+        var timer;
+        window.onscroll = function () {
+            clearTimeout(timer)
+            timer = setTimeout(function () {
+                console.log('====================================');
+                console.log("请求数据了");
+                console.log('====================================');
+            }, 1000)
+        }
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

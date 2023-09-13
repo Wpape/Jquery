@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div>
+        <p class="wu">吴亦凡</p>
+        <p class="luo">罗志祥</p>
+        <h1>2343</h1>
+        <h1>2343</h1>
+        <ul>
+            <li>空调</li>
+        </ul>
+    </div>   
+    <script>
+        // 父节点
+        console.log($(".wu").parent());
+        // 所有的兄弟节点
+        console.log($(".wu").siblings());
+        // 找到class为luo的兄弟节点
+        console.log($(".wu").siblings(".luo"));
+        // 往ui的尾部添加一个li
+        $("ul").append("<li>wifi</li>")
+        // 将li添加到ul的尾部
+        $("<li>西瓜</li>").appendTo($("ul"))
+
+        // 往ul的头部添加一个li
+        $("ul").prepend("<li>雪糕</li>")
+        // 将li添加到ul的头部
+        $("<li>汽水</li>").prependTo($("ul"))
+
+        $("ul").after("<h1>兄弟</h1>")
+        // 给ul添加一个父元素
+        $("ul").wrap("<div></div>")
+        // 将p标签放到ul的后面
+        $("p").insertAfter($("ul"))
+
+        // 克隆
+        $("h1").clone()
+
+
+
+        
+    </script>
+</body>
+</html>

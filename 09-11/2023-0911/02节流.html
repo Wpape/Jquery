@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 降低代码的执行频率 -->
+    <!-- 节流:固定的时间内,多次操作以首次为准 -->
+    <button id="btn">点击请求数据</button>
+    <script>
+
+        var flag = true;
+        btn.onclick = function () {
+            if (flag) {
+                flag=false;
+                console.log('====================================');
+                console.log("请求数据了");
+                console.log('====================================');
+                setTimeout(function(){
+                    flag=true;
+                },1000)
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

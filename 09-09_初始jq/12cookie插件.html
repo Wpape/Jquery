@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="/插件/jquery.cookie.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+
+
+   
+    <script>
+
+        //存入
+        $.cookie('name','jq存储')
+
+        //查看
+        console.log('cookie',$.cookie('name'));
+
+        //设置过期时间
+        $.cookie('data','jq存储',{expires:2})
+        //清除cookie
+        $.cookie('data','jq存储',{expires:-1})
+    </script>
+</body>
+</html>

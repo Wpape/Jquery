@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas width="500" height="500" style="border: 1px solid black;" id="can"></canvas>
+</body>
+</html>
+<script>
+    /** @type {HTMLCanvasElement} */
+
+    var can =document.querySelector('#can')
+    var ctx = can.getContext('2d')
+
+
+    //创建图片
+    // var img = document.createElement('img')
+    var img = new Image()
+
+    img.src = "https://img0.baidu.com/it/u=1435639120,2241364006&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500"
+
+    img.onload = ()=>{
+        //需要插入的元素 x坐标 y坐标 图片宽度 图片的高度
+        ctx.drawImage(this,100,100,300,200)
+    }
+</script>

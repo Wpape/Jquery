@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <canvas width="500" height="500" style="border: 1px  solid red;" id="can"></canvas>
+
+    <script>
+        /** @type {HTMLCanvasElement} */
+
+        var can = document.querySelector("#can");
+        var ctx = can.getContext("2d");
+
+        // var img =document.createElement("img");
+        var img = new Image();
+
+        img.src="https://img.mp.itc.cn/upload/20160620/3d94eb9c43f340578a5d77ca3f31aa22_th.jpeg"
+        
+
+        img.onload=function(){
+            // 需要插入的元素  x坐标 y坐标  图片宽度 图片的高度
+            ctx.drawImage(this,100,100,300,200)
+
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

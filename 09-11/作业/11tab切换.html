@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-3.6.0.js"></script>
+    <style>
+        div{
+            width: 600px;
+            height: 300px;
+            font-size: 30px;
+            border: 1px solid #000;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+        // var btns=document.getElementsByTagName("button");
+        // var divs=document.getElementsByTagName("div");
+        // var x=0;
+        // divs[x].style.display="block";
+
+        // for(var i=0;i<btns.length;i++){
+        //     btns[i].dataset.index=i;
+        //     btns[i].onclick=function(){
+        //         divs[x].style.display="none";
+        //         divs[this.dataset.index].style.display="block";
+        //         x=this.dataset.index
+        //     }
+        // }
+
+
+
+        $("div").hide().first().show();
+        $("button").click(function(){
+            // this指向当前点击的对象 
+            // 直接使用this 返回dom对象 没有办法直接只用jq的方法
+            // 使用$() 就可以吧dom对象  转成jq对象
+            // console.log($(this));
+            // index() 获取当前jq对象的索引
+            var index =$(this).index()
+            $("div").hide().eq(index).show()
+        })
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+    
+
+
+</body>
+</html>

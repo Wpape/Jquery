@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas width="500" height="500" style="border: 1px solid black;" id="can"></canvas>
+    <button id="but">拍照</button>
+</body>
+</html>
+<script>
+  /** @type {HTMLCanvasElement} */
+
+var can =document.querySelector('#can')
+var ctx = can.getContext('2d')
+navigator.mediaDevices.getUserMedia({
+    video:{
+        width:500,
+        height:300
+    }
+}).then(function(res){
+    vid.srcObject = res
+})
+but.onclick = ()=>{
+    ctx.drawImage(vid,0,0)
+}
+</script>

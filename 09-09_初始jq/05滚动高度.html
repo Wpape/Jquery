@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+        #btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>1默认文案</h1>
+    <h1>2默认文案</h1>
+    <h1>3默认文案</h1>
+    <h1>4默认文案</h1>
+    <h1>5默认文案</h1>
+    <h1>6默认文案</h1>
+    <h1>7默认文案</h1>
+    <h1>8默认文案</h1>
+    <h1>9默认文案</h1>
+    <h1>10默认文案</h1>
+    <h1>1默认文案</h1>
+    <h1>2默认文案</h1>
+    <h1>3默认文案</h1>
+    <h1>4默认文案</h1>
+    <h1>5默认文案</h1>
+    <h1>6默认文案</h1>
+    <h1>7默认文案</h1>
+    <h1>8默认文案</h1>
+    <h1>9默认文案</h1>
+    <h1>10默认文案</h1>
+    <button id="btn">回到顶部</button>
+    <script>
+        //兼容写法，获取页面滚顶高度
+        //    document.documentElement.scrollTop || document.body.scrollTop
+
+
+        console.log('jq获取页面滚动高都', $('html').scrollTop() || $('body').scrollTop());
+
+
+        //jq 使用 on委托绑定点击事件
+        $('#btn').on('click', function () {
+
+            // $('html,body').scrollTop(0)
+
+            // animate()用于创建一个自定义动画
+            // delay()延迟执行
+            $('html,body').delay(1000).animate({scrollTop:200},4000,function(){
+                console.log('动画结束');
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #vid{
+            width: 500px;
+            height: 300px;
+            border: 1px solid #000;
+        }
+
+    </style>
+</head>
+
+<body>
+    <video autoplay id="vid"></video>
+    <canvas width="500" height="300" style="border: .01rem  solid red;" id="can"></canvas>
+    <button id="btn">拍照</button>
+    <script>
+        /** @type {HTMLCanvasElement} */
+        var can = document.querySelector("#can");
+        var ctx = can.getContext("2d");
+        // mediaDevices是navigator的只读属性 可以对设置的相机 麦克风等设置进行连接访问
+        navigator.mediaDevices.getUserMedia({
+            video:{
+                width:500,
+                height:300
+            }
+        }).then(function(res){
+            // 媒体流
+            console.log(res);
+            // srcObject 实时流
+            vid.srcObject=res;
+        })
+
+        btn.onclick=function(){
+            ctx.drawImage(vid,0,0)
+        }
+
+
+
+    </script>
+</body>
+
+</html>

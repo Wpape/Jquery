@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+
+        // html5 新增的一个api  用于地理定位服务
+        console.log(navigator.geolocation);
+
+
+        navigator.geolocation.getCurrentPosition(function (res) {
+            console.log(res.coords);
+        })
+
+        // latitude: 34.723267728997286
+        // longitude: 113.75189493495934
+        // watchPosition 实时监控位置  相当于是一个计时器 每隔一段时间获取一次位置信息
+        navigator.geolocation.watchPosition(function (res) {
+            console.log(res.coords);
+        })
+
+    </script>
+</body>
+
+</html>

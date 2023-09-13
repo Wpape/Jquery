@@ -1,0 +1,8 @@
+运动曲线配置文档： https://blog.csdn.net/xiaolongtotop/article/details/8309635
+插件下载地址：https://www.bootcdn.cn/jquery-easing/
+
+懒加载: 配置文档：https://www.cnblogs.com/cyj7/p/4595405.html
+
+滚动条
+      配置文档：https://www.cnblogs.com/lucas27/p/8138216.html
+       下载地址：https://www.bootcdn.cn/jquery.nicescroll/

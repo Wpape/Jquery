@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #login {
+            width: 300px;
+            padding: 50px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        #messageBox {
+            width: 600px;
+            height: 700px;
+            border: 1px solid #000;
+            margin: 0 auto;
+            position: relative;
+            display: none;
+
+        }
+
+        #list {
+            height: 500px;
+            border: 1px solid #000;
+            overflow: auto;
+        }
+
+        #txt {
+            width: 99%;
+            height: 200px;
+            border: none;
+            outline: none;
+            border: 1px solid #000;
+        }
+
+        #send {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+        .join {
+            width: 200px;
+            background-color: #999;
+            color: white;
+            border-radius: 10px;
+            margin: 10px auto;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .item {
+            margin: 10px 0;
+        }
+
+        .item div:nth-of-type(1) {
+            background-color: red;
+            width: 80px;
+            border-radius: 10px;
+        }
+
+        .item div:nth-of-type(2) {
+            padding: 20px;
+            background-color: #999;
+            width: 200px;
+            border-radius: 10px;
+        }
+
+        .right {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        .right div:nth-of-type(2) {
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="login">
+        <input type="text" id="userName">
+        <br>
+        <button id="info">登录</button>
+    </div>
+
+    <div id="messageBox">
+        <div id="list"></div>
+        <textarea id="txt"></textarea>
+        <button id="send">发送</button>
+    </div>
+
+
+
+    <script>
+        var ws = new WebSocket("ws://192.168.218.230:3011");
+        var uuid = Math.floor(Math.random() * 100000000000000000000)
+
+        info.onclick = function () {
+            login.style.display = "none";
+            messageBox.style.display = "block"
+            ws.send(JSON.stringify({
+                type: 1,
+                username: userName.value,
+                uuid: uuid
+            }))
+        }
+
+        ws.onmessage = function (res) {
+            console.log(res.data);
+            var data = JSON.parse(res.data)
+            if (data.type == 1) {
+                list.innerHTML += `<div class='join' >${data.msg}</div>`
+            } else {
+                list.innerHTML += `<div class='item ${data.uuid == uuid ? "right" : ""}'>
+                    <div>${data.username}</div>
+                    <div>${data.msg}</div>   
+                    </div>`
+            }
+
+            list.scrollTop = list.scrollHeight;
+
+        }
+        send.onclick = function () {
+            ws.send(JSON.stringify({
+                type: 2,
+                msg: txt.value,
+                username: userName.value,
+                uuid: uuid
+            }))
+            txt.value = ""
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+
+<ul>
+    <li>橋本ありな</li>
+</ul>
+   
+    <script>
+        $('li').click(function(e){
+
+            //使用jq绑定的事件处理函数，也会得到一个事件对象，但是这个事件对象，不是原生的事件，而是jq封装之后的事件对象
+            //jq封装好的事件中 有一个originalEvent属性 表示这个事件的原生对象
+            console.log('originalEvent',e.originalEvent);
+            console.log('event',event);
+            //事件类型
+            console.log('事件类型',e.type);
+
+            //当前绑定事件的dom元素
+            console.log('this',this);
+            //当前触发事件的dom元素
+            console.log('当前触发的dom元素',e.target);
+        })
+
+
+        //on 可以同时添加多个事件
+
+        //需求：点击的时候变黄，移入变绿
+
+        $('li').on('click mouseover mouseout',function(e){
+            if(e.type == 'click'){
+                $(this).css('color','yellow')
+            }else if(e.type == 'mouseover'){
+                $(this).css('color','green')
+            }else{
+                $(this).css('color','')
+            }
+        })
+    </script>
+</body>
+</html>

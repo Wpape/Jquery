@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <ul>
+        <li>吴亦凡
+            <span>fsdafd</span>
+        </li>
+    </ul>
+
+    <script>
+        $("li").click(function(e){
+            console.log('====================================');
+            // 使用jq绑定的事件处理函数,也会得到一个事件对象,但是这个事件对象,不是原生的时间,而是jq封装之后的事件对象
+            // jq封装好的事件中 有一个originalEvent属性 表示这个事件的原生对象
+            console.log(e.originalEvent);
+            console.log(event);
+            // 表示事件的类型
+            console.log(e.type);
+
+            // 当前绑定事件的dom元素
+            console.log(this);
+            // 当前触发事件的dom元素
+            console.log(e.target);
+
+
+            console.log('====================================');
+
+        })
+
+        // on() 可以同时添加多个事件
+
+        // 需求: 点击的时候变成黄色  移入的时候变成绿色
+
+        $("li").on("click mouseover",function(e){
+            console.log(e.type);
+            if (e.type=="click") {
+                $(this).css("color",'yellow')
+            } else {
+                $(this).css("color",'green')
+            }
+        })
+
+
+
+        
+    </script>
+</body>
+</html>

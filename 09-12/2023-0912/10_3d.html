@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 800px;
+            height: 800px;
+            border: 1px solid #000;
+            margin: 100px auto;
+          
+            /* 景深  视距  眼睛到物体之间的距离 距离越大 3d效果越不明显 建议设置 200-1000 */
+            /* 可以让电脑利于近大远小 近实远虚的原理 模拟出3d效果 */
+            perspective: 1000px;
+
+            /* 调整视线的原点 (眼睛的位置  默认50% 50%) */
+            /* perspective-origin: 50% 50%; */
+
+
+        }
+
+        .inner {
+            position: relative;
+            height: 800px;
+            /* flat 2d呈现   preserve-3d  立体呈现 */
+            transform-style: preserve-3d;
+           
+        }
+
+        .item {
+            height: 400px;
+            width: 400px;
+            background-color: rgba(0, 0, 0, 0.5);
+            font-size: 100px;
+            text-align: center;
+            line-height: 400px;
+            position: absolute;
+            left: calc(50% - 400px / 2);
+            top: calc(50% - 400px / 2);
+        }
+
+        .item1 {
+            transform: rotateX(90deg) translateZ(300px);
+        }
+
+        .item2 {
+            transform:translateZ(-150px);
+        }
+        .item3 {
+            transform: rotateX(-90deg) translateZ(300px);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- z轴   眼睛平视前方    z轴的值是正值 相当于离眼睛越近  z轴的值是负值  相当于离眼睛越远  -->
+    <div class="box">
+        <div class="inner">
+            <div class="item item1">1</div>
+            <div class="item item2">2</div>
+            <!--  <div class="item item3">3</div>
+            <div class="item item4">4</div>
+            <div class="item item5">5</div>
+            <div class="item item6">6</div> -->
+        </div>
+    </div>
+
+    <script>
+
+    </script>
+</body>
+
+</html>

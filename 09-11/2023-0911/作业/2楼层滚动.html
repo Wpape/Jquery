@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../6.8jQuery/jquery-3.6.0.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav {
+            position: fixed;
+            left: 10%;
+            top: 35%;
+        }
+
+        .nav li {
+            width: 120px;
+            height: 40px;
+            background-color: black;
+            margin: 5px 0;
+        }
+
+        .box li {
+            height: 1000px;
+        }
+
+        .box li:nth-child(1) {
+            background-color: red;
+        }
+
+        .box li:nth-child(2) {
+            background-color: yellow;
+        }
+
+        .box li:nth-child(3) {
+            background-color: green;
+        }
+
+        .box li:nth-child(4) {
+            background-color: pink;  
+        }
+        .nav .active {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="nav">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul class="box">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+</body>
+<script>
+    // 导航影响页面滚动
+    $(".nav li").click(function () {
+        // 获取点击的导航条的索引
+        var index = $(this).index();
+        // 获取点的导航条对应的楼层元素到顶部的距离
+        var st = $(".box li").eq(index).offset().top
+        // console.log(st);
+        // 让页面滚动到对应的楼层  
+        $("html,body").animate({ scrollTop: st - 100 }, 300)
+    })
+    //
+
+    $(window).scroll(fun)
+
+
+    function fun(){
+        // 获取页面滚动的高度
+        // var st=$("body").scrollTop()||$("html").scrollTop();
+        // // 循环所有的楼层, 对每一个楼层进行判断
+        // $(".nav li").removeClass("active")
+        // for(var i=0; i<$(".box li").length;i++){
+        //     // 找到每一个楼层
+        //     var curr=$(".box li").eq(i);
+        //     // 每一个楼层进行判断  如果已经滚动的距离+100>=某一个楼层到body顶部的距离(说明已经滚动到这个楼层了)
+        //     // 已经滚动的距离+100<某一个楼层底部到body顶部的距离(说明已经滚动到这个楼层底部了)
+
+        //     if (st+100>=curr.offset().top&&st+100<curr.offset().top+curr.innerHeight()) {
+        //         $(".nav li").eq(i).addClass("active")
+        //     }
+        // }
+
+        // ======================
+        var st=$("body").scrollTop()||$("html").scrollTop();
+
+        $(".nav li").addClass(function(index){
+            // 索引
+            // console.log(index);
+            // 判断是否滚动到某个楼层
+            if ($(".box li").eq(index).offset().top-st<=100) {
+                $(".nav li").removeClass("active")
+                return "active"
+            }  
+        })
+    }
+    fun()
+
+
+
+
+
+
+</script>
+
+</html>

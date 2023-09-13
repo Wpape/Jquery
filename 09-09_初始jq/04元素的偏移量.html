@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+        #outer{
+            width: 500px;height: 500px;background-color: red;
+            position: relative;
+        }
+        #inner{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="inner"></div>
+    </div>
+
+   
+    <script>
+        //获取当前元素到达参照物顶部的距离（参照物是离他最近的带有非静态定位的父级元素）
+        console.log('',inner.offsetTop);
+        //获取当前元素到达参照物左侧的距离（参照物是离他最近的带有非静态定位的父级元素）
+        console.log('',inner.offsetLeft);
+
+
+        //不会受父元素定位的影响
+        console.log('',$('#inner').offset());
+        //会受到父元素定位方式的影响参照物是离自己最近的带有非静态定位的父级元素，如果父级元素没有非静态定位 获取的就是距离文档顶部的距离
+        console.log('',$('#inner').position());
+    </script>
+</body>
+</html>

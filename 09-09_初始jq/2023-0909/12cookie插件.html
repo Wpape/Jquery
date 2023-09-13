@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="./插件/jquery.cookie.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+
+
+   
+    <script>
+        // document.cookie=""
+        $.cookie("name","吴亦凡")
+        console.log('====================================');
+        console.log($.cookie("name"));
+        console.log('====================================');
+        $.cookie("name","吴亦凡",{expires:2})
+        $.cookie("name","吴亦凡",{expires:-1})
+    </script>
+</body>
+</html>
+
+
+ <!-- 使用jq重写  轮播图作业 tab切换作业 楼层滚动作业 -->

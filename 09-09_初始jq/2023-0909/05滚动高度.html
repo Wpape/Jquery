@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+        #btn {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+    <h1>吴亦凡</h1>
+
+    <button id="btn">回到顶部</button>
+
+
+
+    <script>
+
+        console.log('====================================');
+        // 获取页面滚动的高度
+        console.log($("html").scrollTop() || $("body").scrollTop());
+        console.log('====================================');
+        // 兼容写法
+        // document.documentElement.scrollTop || document.body.scrollTop
+
+
+        //  $("#btn").click(function(){
+
+        //  })
+
+        $("#btn").on("click", function () {
+            // 滚动到顶部
+            // $("html,body").scrollTop(0)
+            // // 滚动到指定位置
+            // $("html,body").scrollTop(100)
+
+            // animate() 用于创建一个自定义动画
+            // delay() 延迟执行
+              $("html,body").delay(1000).animate({scrollTop:200},4000,function(){
+                console.log("动画结束");
+              })
+
+        })
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

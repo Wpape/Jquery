@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
+    <style>
+        
+    </style>
+</head>
+<body>
+
+<button id="btn">发送请求：防抖</button>
+<button id="btns">发送请求：节流</button>
+   
+    <script>
+        //降低代码的执行频率
+        //防抖：多次操作 一最后一次为准
+
+        var timer;
+        btn.onclick = function(){
+            clearTimeout(timer)
+            timer = setTimeout(function(){
+                console.log('请求数据了');
+            },1000)
+
+
+
+            var flag = true;
+            btns.onclick = function(){
+                if(flag){
+                    flag = false
+                    console.log('请求数据了');
+                    setTimeout(function(){
+                        flag = true
+                    },1000)
+                }
+            }
+        }
+    </script>
+</body>
+</html>

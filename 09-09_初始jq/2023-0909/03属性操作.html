@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h1>吴亦凡</h1>
+    <a href="http://www.baidu.com" aaa="666"></a>
+
+    <h2>罗志祥</h2>
+
+    <script>
+        $("h2").addClass(function(){
+            // return "aaa"
+            if (10<20) {
+                return "aaa"
+            } else {
+                return "bbb"
+            }
+        })
+
+
+
+
+
+
+        $("h1").addClass("box")
+        $("h1").removeClass("box")
+        // toggleClass() 切换一个calss  有则删除  无则添加
+        $("h1").toggleClass("box")
+        // 判断是否包含此class 返回值是一个布尔值 有 true  没有 false
+        $("h1").hasClass("box");
+
+
+
+        console.log('====================================');
+        // prop() 用于设置或者获取标签的标准属性
+        console.log($("a").prop("href"));//获取
+        $("a").prop("href", "http://www.taobao.com")//设置
+        $("a").prop("class", "title")//设置
+        $("a").prop("id", "title")//设置
+        $("a").prop({
+            id: "title",
+            class: "tbox"
+        })//设置
+
+        console.log('====================================');
+
+
+        console.log('====================================');
+        // 不能用于设置或者获取自定义属性
+        console.log($("a").prop("aaa"));//
+
+        console.log($("a").attr("aaa"));//undefined
+
+        $("a").attr("bbb", 6666);
+
+        console.log('====================================');
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

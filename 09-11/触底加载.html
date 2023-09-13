@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 400px;
+            overflow: auto;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <h1>默认文案1</h1>
+        <h1>默认文案2</h1>
+        <h1>默认文案3</h1>
+        <h1>默认文案4</h1>
+        <h1>默认文案5</h1>
+        <h1>默认文案6</h1>
+        <h1>默认文案7</h1>
+        <h1>默认文案8</h1>
+        <h1>默认文案9</h1>
+        <h1>默认文案10</h1>
+        <h1>默认文案11</h1>
+        <h1>默认文案12</h1>
+        <h1>默认文案13</h1>
+        <h1>默认文案14</h1>
+        <h1>默认文案15</h1>
+        <h1>默认文案16</h1>
+        <h1>默认文案17</h1>
+        <h1>默认文案18</h1>
+        <h1>默认文案19</h1>
+        <h1>默认文案20</h1>
+    </div>
+    <script>
+        //判断触底  距离底部还有100px的时候 添加新的元素
+
+        //已经滚动的高度     总高度              元素可视区域高度
+        //box.scrollTop     box.scrollHeight    box.clientHeight
+        //box.scrollTop >= box.scrollHeight - box.clientHeight
+
+
+        var loading = false;
+        box.onscroll = function () {
+            if (box.scrollTop >= box.scrollHeight - box.clientHeight - 100) {
+
+                if (!loading) {
+
+                    loading = true
+
+                    //发起请求，请求下一页的数据
+                    console.log('发送请求');
+
+                    setTimeout(function () {
+
+                        box.innerHTML += `
+                            <h2>默认文案21</h2>
+                            <h2>默认文案22</h2>
+                            <h2>默认文案23</h2>
+                            <h2>默认文案24</h2>
+                            `
+                            
+                        loading = false
+                    }, 1000)
+
+                }
+
+
+            }
+        }
+    </script>
+</body>
+
+</html>

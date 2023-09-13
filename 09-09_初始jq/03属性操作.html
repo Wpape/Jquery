@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+
+    <h1>漳卅</h1>
+    <a href="#" aaa = '666'>
+        
+    </a>
+   
+    <script>
+        //添加class
+        $('h1').addClass('box');
+        //删除class
+        $('h1').removeClass('box')
+        //切换class有则删除 无则添加
+        $('h1').toggleClass('box')
+        //判断是否包含此class 返回值是一个布尔值 有true 无false
+        $('h1').hasClass('box');
+
+        //prop()用于设置或者获取标签的标准属性
+        console.log('',$('a').prop('href'));//获取
+        $('a').prop('href','https://www.liaoxuefeng.com/wiki/896043488029600')//设置
+        $('a').html('https://www.liaoxuefeng.com/wiki/896043488029600')//设置
+        $('a').prop({
+            class:'title',
+            id:'title'
+        })//传入对象 设置多个标准属性
+
+
+        //不能用于设置或者获取自定义属性
+        // console.log('');
+        function clickFn(){
+            console.log('',this);
+        }
+        function add(){
+            this.innerText = ('123')
+            // console.log('',this.);
+        }
+        $('h1').click(
+            add
+        )
+</script>
+</body>
+</html>

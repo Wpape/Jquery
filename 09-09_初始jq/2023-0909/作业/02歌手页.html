@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #list img {
+            width: 130px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="list"></ul>
+
+   
+    <script>
+        fetch("https://autumnfish.cn/top/artists?offset=0&limit=50").then(r => r.json()).then(res => {
+            console.log(res);
+            res.artists.forEach(function (item, index) {
+                console.log(item);
+                var img = `<img src="${item.picUrl}" alt="">`
+                list.innerHTML += `<a href="./03歌手详情.html?id=${item.id}">
+                     <li>
+                    ${index < 10 ? img : ""}
+                  <p>${item.name}</p>
+            </li>  
+            </a>`
+            })
+        })
+
+    </script>
+</body>
+
+</html>

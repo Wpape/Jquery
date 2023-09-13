@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //和socket服务器建立连接
+    var ws = new WebSocket("ws://192.168.218.230:3011")
+
+    ws.onopen = ()=>{
+        console.log('连接成功');
+        ws.send('于海洋爱🍺')
+    }
+    ws.onerror = ()=>{
+        console.log('链接失败');
+    }
+    ws.onmessage =(res)=>{
+        console.log('返回信息',res.data);
+    }
+</script>
